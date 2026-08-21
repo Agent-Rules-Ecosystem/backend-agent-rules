@@ -1,51 +1,38 @@
-# Estilo Flutter / Dart
+# Estilo y Convenciones de Código Backend
 
-## Widgets y archivos
-
-- Usar `const` cuando aplique.
-- Mantener archivos Dart idealmente bajo 250 líneas; máximo 300.
-- Extraer widgets o diálogos extensos de pantallas principales.
-- Liberar `TextEditingController`, `AnimationController` y `StreamSubscription`.
-- Centralizar estado con patrón elegido por proyecto. Si usa Riverpod, separar vista de providers/notifiers.
-- En `DropdownButtonFormField`, usar `initialValue`; evitar `value` deprecado.
-
-## Nombrado
+## Nomenclatura
 
 | Elemento | Convención | Ejemplo |
 |---|---|---|
-| Clases / Widgets | `PascalCase` | `UserProfileCard` |
-| Archivos Dart | `snake_case` | `user_profile_card.dart` |
-| Variables / métodos | `camelCase` | `fetchUserData()` |
-| Constantes | `camelCase` con `const` | `const defaultTimeout` |
-| Providers (Riverpod) | `camelCaseProvider` | `authStateProvider` |
-| Enums | `PascalCase`, valores `camelCase` | `enum Status { loading, done }` |
+| Clases / Servicios | `PascalCase` | `AuthService`, `UserRepository` |
+| Archivos | `kebab-case` | `auth-service.ts`, `user.model.py` |
+| Variables / funciones | `camelCase` (JS/TS) / `snake_case` (Python) | `getUserById()` / `get_user_by_id()` |
+| Constantes | `UPPER_SNAKE_CASE` | `MAX_RETRIES`, `JWT_SECRET` |
+| Endpoints REST | `kebab-case` en minúsculas | `/api/user-profiles` |
+| Variables de entorno | `UPPER_SNAKE_CASE` | `DATABASE_URL` |
 
-- Nombres descriptivos. Evitar: `data`, `info`, `temp`, `val` sin contexto.
-- Prefijo `_` solo para privados de clase, no para variables locales.
+## Manejo de Errores
 
-## Async / Await
+- Nunca silenciar errores con `catch(e) {}` vacío.
+- Usar códigos HTTP semánticamente correctos (200, 201, 400, 401, 403, 404, 422, 500).
+- Separar errores de validación, negocio y sistema en capas distintas.
+- Siempre loguear errores con contexto suficiente para debugging.
 
-- Preferir `async`/`await` sobre `.then()` encadenado para legibilidad.
-- Usar `FutureBuilder` solo cuando el `Future` sea local al build. Para estado global → provider/notifier.
-- No usar `await` en `initState`; usar `Future.microtask(() => ...)` o manejar en el provider.
-- Siempre manejar el caso `AsyncError` en `FutureBuilder` / `AsyncValue`.
+## Async / Concurrencia
 
-## Manejo de errores
+- Preferir `async/await` sobre callbacks o `.then()` encadenado.
+- Manejar siempre el caso de error en operaciones asíncronas.
+- No bloquear el event loop con operaciones síncronas pesadas.
 
-- Nunca silenciar errores con `catch (e) {}` vacío. Mínimo: loguear con `debugPrint`.
-- Usar tipos de error específicos del dominio; evitar `Exception` genérica en lógica de negocio.
-- En UI: mostrar `SnackBar` o diálogo — nunca dejar error silencioso al usuario.
-- Separar errores de red, de validación y de negocio en capas distintas.
+## Seguridad
 
-## Navegación
+- Nunca hardcodear secretos, tokens ni contraseñas en el código.
+- Validar y sanitizar toda entrada del usuario antes de procesarla.
+- Usar variables de entorno para configuración sensible.
+- Aplicar principio de mínimo privilegio en permisos de base de datos.
 
-- Usar el sistema de rutas del proyecto (GoRouter / Navigator 2 / Navigator 1 — según proyecto).
-- No mezclar estilos de navegación en el mismo proyecto.
-- Pasar solo datos serializables por rutas nominadas. Objetos complejos → provider compartido.
-- `context.pop()` con resultado en diálogos/sheets; no usar `Navigator.of(context).pop()` directamente si el proyecto usa GoRouter.
+## Organización
 
-## Nulabilidad
-
-- Activar null-safety (`dart>=2.12`). No usar `!` sin estar seguro del valor.
-- Preferir `??` y `?.` sobre comprobaciones `if (x != null)` verbosas.
-- Evitar `late` salvo en campos inicializados en `initState` con justificación clara.
+- Archivos idealmente < 250 líneas; máximo 300.
+- Separar responsabilidades: rutas → controladores → servicios → repositorios.
+- No mezclar lógica de negocio en middlewares o manejadores de rutas.

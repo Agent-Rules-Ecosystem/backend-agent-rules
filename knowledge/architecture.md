@@ -1,18 +1,23 @@
-# Arquitectura Flutter — Referencia de Capas
+# Arquitectura de Proyectos Backend
 
-> **Referencia de capas sugeridas** para describir la arquitectura de un proyecto Flutter.
-> La plantilla real para crear `overview/architecture.md` está en `templates/architecture.md`.
-> Cargar bajo demanda cuando se necesite orientación sobre organización de capas (Clean Arch, etc.).
+## Capas de Arquitectura
 
-```mermaid
-graph LR
-    UI[Flutter UI / Screens] --> State[State manager]
-    State --> Service[API / Backend]
-    Service --> Model[Models / Entities]
-```
+| Capa | Responsabilidad | Ejemplos |
+|---|---|---|
+| **Transporte** | Manejo de HTTP, WebSockets, RPC | Controllers, Routes, Resolvers (GraphQL) |
+| **Aplicación** | Casos de uso y orquestación | Services, Use Cases, Command Handlers |
+| **Dominio** | Lógica de negocio pura | Entities, Value Objects, Domain Events |
+| **Infraestructura** | Persistencia, APIs externas, mensajería | Repositories, ORM Models, HTTP Clients |
 
-Capas sugeridas:
+## Patrones Recomendados
 
-1. Presentation: pantallas, widgets, controlador/proveedor elegido.
-2. Domain: entidades, casos de uso, contratos de repositorio.
-3. Data: implementaciones, Firebase/API/BD local según proyecto.
+- **Repository Pattern**: Abstracción de la persistencia para desacoplar el dominio de la base de datos.
+- **Dependency Injection**: Inyectar dependencias para facilitar testing y desacoplamiento.
+- **DTO Pattern**: Separar la representación externa (API) de los modelos internos de dominio.
+- **Middleware Chain**: Para logging, auth, validación y manejo de errores de forma transversal.
+
+## Reglas de Arquitectura
+
+- Las rutas no contienen lógica de negocio — solo delegación a servicios.
+- Los modelos de base de datos no se exponen directamente en la API — usar DTOs.
+- Nunca importar infraestructura directamente desde el dominio.

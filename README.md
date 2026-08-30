@@ -24,7 +24,7 @@ Se instala como submódulo de Git en `.agents/`.
 | `$boot` | Bootstrap completo: reglas, `overview/`, handoff de agente. |
 | `$status` | Estado activo en 5 líneas. |
 | `$work [descripción]` | Registra tarea/bug y sincroniza rastreadores. |
-| `$archi` | Actualiza diagramas Mermaid de servicios y rutas en `overview/architecture.md`. |
+| `$archi` | Actualiza diagramas Mermaid de servicios y rutas en `overview/architecture.md` (Hub) y `overview/architecture/` (Spoke). |
 | `$learn [texto]` | Registra propuesta candidata con Filtro Agnóstico. |
 | `$close` | Cierre de sesión y sincronización final. |
 

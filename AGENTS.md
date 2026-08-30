@@ -39,6 +39,7 @@ Crear `overview/` desde `.agents/templates/` al iniciar proyecto:
 - `overview/workflows/` (guías por flujo con terminología 100% agnóstica)
 - `overview/trackers/progress.md`
 - `overview/trackers/architecture.md` cuando aplique
+- `overview/architecture.md` (y su estructura Hub & Spoke en `overview/architecture/`)
 - `overview/context/` para archivos de contexto general no mapeables
 - `overview/learning.md` cuando surja mejora candidata
 

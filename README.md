@@ -30,10 +30,22 @@ Se instala como submódulo de Git en `.agents/`.
 
 ---
 
-## 📦 Instalación
+## ⚡ Quick Start
 
+**1. Instala la gobernanza en tu proyecto**
 ```bash
-git submodule add https://github.com/xolotl-hub/backend-agent-rules.git .agents
+git submodule add git@github.com:Agent-Rules-Ecosystem/backend-agent-rules.git .agents
 ```
 
-Iniciar con: `$boot`
+**2. Inicia el agente**
+```text
+$boot
+```
+
+**3. Registra tu primera tarea**
+```text
+$work agregar endpoint REST para gestión de usuarios
+```
+
+---
+

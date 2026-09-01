@@ -18,9 +18,9 @@ graph TD
     classDef done fill:#2e7d32,stroke:#fff,color:#fff;
     classDef pending fill:#c62828,stroke:#fff,color:#fff;
 
-    root[lib/features]:::done --> feature1[feature_a/]:::done
-    feature1 --> screen1[screen.dart]:::done
-    feature1 --> widget1[widgets.dart]:::pending
+    root[src/services]:::done --> service1[auth_service.ts]:::done
+    service1 --> controller1[auth_controller.ts]:::done
+    service1 --> repo1[user_repository.ts]:::pending
 ```
 
 ## 3. Actualización Incremental

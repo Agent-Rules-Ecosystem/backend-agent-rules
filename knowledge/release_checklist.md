@@ -1,30 +1,21 @@
-# Checklist pre-release Flutter
+# Checklist pre-release Backend
 
-Cuando usuario pida APK, AAB, IPA o revisión de build: ejecutar checklist, mostrar comando; no ejecutar build sin solicitud explícita.
+Cuando el usuario pida desplegar, construir contenedor Docker o preparar release del servicio Backend: ejecutar checklist, mostrar comandos; no desplegar sin solicitud explícita.
 
-- [ ] `flutter analyze` sin errores nuevos.
-- [ ] `flutter test` verde, si hay tests.
-- [ ] Sin `print()`/`debugPrint()` olvidados en cambios.
-- [ ] Configuración Firebase presente, si proyecto la usa.
-- [ ] Claves de firma presentes y no trackeadas, si aplica.
-- [ ] `overview/trackers/progress.md` y tracker correspondiente actualizados.
+- [ ] Linter y verificación de tipos (ej. `npm run lint`, `flake8`, `golangci-lint`, `cargo check`) sin errores nuevos.
+- [ ] Suite de pruebas verde (ej. `npm test`, `pytest`, `go test ./...`, `cargo test`), si hay tests.
+- [ ] Sin `console.log()` / `print()` de debug olvidados en código de producción.
+- [ ] Variables de entorno requeridas documentadas en `.env.example` y configuradas en el servidor/CI.
+- [ ] Credenciales y secretos (claves de API, tokens JWT, claves DB) no hardcodeados en repositorio.
+- [ ] Migraciones de Base de Datos probadas y listas para ejecución.
+- [ ] `overview/trackers/progress.md` y trackers correspondientes actualizados.
 
-## AAB
-
-```bash
-flutter clean
-flutter pub get
-flutter build appbundle --release
-```
-
-## APK
+## Construcción de Contenedores / Artefactos
 
 ```bash
-flutter build apk --release --split-per-abi
-```
+# Ejemplo Docker Build
+docker build -t backend-service:latest .
 
-## IPA
-
-```bash
-flutter build ipa --release
+# Ejemplo Test Suite Execution
+npm test
 ```

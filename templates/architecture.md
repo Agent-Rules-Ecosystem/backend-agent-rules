@@ -15,16 +15,17 @@
 
 ```mermaid
 graph TD
-    UI[Presentation / UI Layer] --> DOMAIN[Domain / Use Cases]
-    DOMAIN --> INFRA[Infrastructure / Data]
-    INFRA --> LOCAL[Local Storage]
-    INFRA --> REMOTE[Remote Service / API]
+    API["Transport / API (Routes & Controllers)"] --> SVC["Application / Services"]
+    SVC --> DOMAIN["Domain (Entities & Rules)"]
+    SVC --> REPO["Repositories / Infrastructure"]
+    REPO --> DB["Database / Cache"]
+    REPO --> EXT["External Services / APIs"]
 ```
 
 ## 3. Índice de Módulos (Subdocumentos de Dominio)
-* 📦 **[Módulo Principal](./overview/architecture/modules/principal.md):** Especificación técnica y flujo operativo principal.
+* 📦 **[Módulo Principal](./architecture/modules/principal.md):** Especificación técnica y flujo operativo principal.
 
 ## 4. Guías Transversales
-* 🧭 **[Mapa Global de Rutas](./overview/architecture/routes_map.md)** — Enrutamiento y navegación del sistema.
-* 🔄 **[Flujo de Datos](./overview/architecture/core/data_flow.md)** — Estado global, sync y persistencia.
-* 📏 **[Reglas de Importación](./overview/architecture/core/import_rules.md)** — Convenciones de capas e importaciones.
+* 🧭 **[Mapa Global de Endpoints](./architecture/routes_map.md)** — Enrutamiento de endpoints HTTP/RPC y middlewares.
+* 🔄 **[Flujo de Datos](./architecture/core/data_flow.md)** — Estado global, sync y persistencia.
+* 📏 **[Reglas de Importación](./architecture/core/import_rules.md)** — Convenciones de capas e importaciones.

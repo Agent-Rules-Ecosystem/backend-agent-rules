@@ -22,7 +22,7 @@ Antes de responder o editar, leer y cumplir:
 - Primer mensaje de conversación cuando el proyecto tiene `.agents/` pero no `overview/`.
 - Cualquier mensaje que comience con `$` → reconocer como $-comando según `core/commands.md` y ejecutar el protocolo correspondiente.
 
-Para cualquier tarea que inspeccione o cambie código del proyecto, antes de analizar o responder cargar `overview/session.md`, `overview/work.md`, `overview/work/tasks.md`, `overview/work/deuda_tecnica.md`, `overview/work/pendientes.md` y `overview/trackers/progress.md`. Sincronización automática de todos los archivos de control en `overview/` durante `$work` y `$close` es obligatoria. Si falta `overview/`, crearlo desde `.agents/templates/`. Al finalizar `$boot`, ejecutar el protocolo `overview/work_review.md`.
+Para cualquier tarea que inspeccione o cambie código del proyecto, cargar el estado siguiendo el **Protocolo de Carga de Contexto en 3 Capas** (`core/brain.md`): iniciar con **Capa 1** (`overview/session.md` y `overview/work.md`) y cargar **Capa 2/3** (`overview/work/tasks.md`, `overview/work/deuda_tecnica.md`, `overview/work/pendientes.md`, `overview/trackers/progress.md`, `overview/architecture/` o `overview/work/skill/`) solo según lo exija la tarea o `work_review.md`. Sincronización automática de todos los archivos de control afectados en `overview/` durante `$work` y `$close` es obligatoria. Al finalizar o resolver una tarea proveniente de `pendientes.md` o `deuda_tecnica.md`, mover físicamente la fila correspondiente a `## ✅ Completados (Historial)` y actualizar `work.md`. Si falta `overview/`, crearlo desde `.agents/templates/`. Al finalizar `$boot`, ejecutar el protocolo `overview/work_review.md`.
 
 Las reglas globales viven solo en `.agents/`. **Inviolabilidad estricta de `.agents/`**: Nunca modificar directamente archivos de gobernanza desde un proyecto local.
 
@@ -38,7 +38,6 @@ Crear `overview/` desde `.agents/templates/` al iniciar proyecto:
 - `overview/work_review.md` (protocolo de auditoría `$boot`)
 - `overview/workflows/` (guías por flujo con terminología 100% agnóstica)
 - `overview/trackers/progress.md`
-- `overview/trackers/architecture.md` cuando aplique
 - `overview/architecture.md` (y su estructura Hub & Spoke en `overview/architecture/`)
 - `overview/context/` para archivos de contexto general no mapeables
 - `overview/learning.md` cuando surja mejora candidata

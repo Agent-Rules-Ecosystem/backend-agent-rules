@@ -5,7 +5,7 @@
 | Elemento | Convención | Ejemplo |
 |---|---|---|
 | Clases / Servicios | `PascalCase` | `AuthService`, `UserRepository` |
-| Archivos | `kebab-case` | `auth-service.ts`, `user.model.py` |
+| Archivos | `kebab-case` (JS/TS) / `snake_case` (Python/Go/Rust) | `auth-service.ts`, `user_model.py`, `auth_handler.go` |
 | Variables / funciones | `camelCase` (JS/TS) / `snake_case` (Python) | `getUserById()` / `get_user_by_id()` |
 | Constantes | `UPPER_SNAKE_CASE` | `MAX_RETRIES`, `JWT_SECRET` |
 | Endpoints REST | `kebab-case` en minúsculas | `/api/user-profiles` |

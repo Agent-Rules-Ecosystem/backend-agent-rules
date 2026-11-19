@@ -8,7 +8,7 @@ Se instala como submódulo de Git en `.agents/`.
 
 ## 📌 Pilares de Gobernanza
 
-1. **⚡ Modo Cavernícola & Token Saver**: Respuestas ultra-concisas y referencias de líneas.
+1. **⚡ Modo Lacónico & Token Saver**: Respuestas ultra-concisas y referencias de líneas.
 2. **🔄 Sincronización Automática de Rastreadores**: Actualización de archivos `overview/` en `$work` y `$close`.
 3. **🗺️ Arquitectura Viva (`$archi`)**: Mapa de servicios, rutas, modelos y dependencias en diagramas Mermaid.
 4. **👥 Handoff y Memoria Versionada por Agente**: Firma canónica por proveedor/modelo.
